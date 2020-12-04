@@ -1,10 +1,41 @@
-# KoELECTRA-finetuned-sentiment-analysis
-
-쇼핑 리뷰 감성분석을 위해 [bab2min](https://github.com/bab2min)님께서 공유해주신 [naver-shopping-review corpus](https://github.com/bab2min/corpus/tree/master/sentiment)를 활용하여 [monologg](https://github.com/monologg)님의 [KoELECTRA](https://github.com/monologg/KoELECTRA) pretrained 모델을 fine-tuning한 모델입니다.
+# KoELECTRA-finetuned-sentiment-analysis 😊😐😥🤬
+본 모델은 특정 corpus에 편향된 감성분석이 아닌 **일반화되고 범용성 높은 감성분석**을 수행하고자 fine-tuning된 모델입니다.  
+(새로운 corpus 등장 시 추가 학습 예정!😎)
 <br/>
 
-## Usage
-본 모델은 🤗**huggingface transformers**에 porting 되어 있으며 아래와 같이 쉽게 weight을 사용하실 수 있습니다.
+Training을 위해 [monologg](https://github.com/monologg)님의 [KoELECTRA](https://github.com/monologg/KoELECTRA) 모델을 [bab2min](https://github.com/bab2min)님께서 공유해주신 [naver-shopping-review corpus](https://github.com/bab2min/corpus/blob/master/sentiment/naver_shopping.txt) 및 [steam-game-review corpus](https://github.com/bab2min/corpus/blob/master/sentiment/steam.txt)와 [Lucy Park](https://github.com/e9t)님께서 공유해주신 [NSMT](https://github.com/e9t/nsmc) 데이터 셋을 활용하여 fine-tuning을 진행하였습니다.  
+</br>
+
+## 📊 Evaluation
+각 corpus별 성능 평가 결과는 아래와 같습니다.  
+**1. naver shopping reivew**
+```
+              precision    recall  f1-score   support
+           0       0.97      0.93      0.95     19975
+           1       0.93      0.97      0.95     20025
+    accuracy                           0.95     40000
+```
+>naver-shopping-review 코퍼스에 대해 해당 단일 코퍼스로 모델 학습 및 성능 평가 시 96% acc를 보인 것에 비해  
+>서로 다른 분야의 sentiment corpus를 학습하였음에도 95% acc로 성능이 크게 하락하지 않았습니다!👏👏
+
+**2. naver sentiment movie corpus(NSMT)**
+```
+              precision    recall  f1-score   support
+           0       0.96      0.89      0.93     20116
+           1       0.90      0.96      0.93     19883
+    accuracy                           0.93     39999
+```
+**3. steam game review**
+```
+              precision    recall  f1-score   support
+           0       0.88      0.88      0.88      9973
+           1       0.88      0.88      0.88     10027
+    accuracy                           0.88     20000
+```  
+</br>
+
+## ✏ Usage
+본 모델은 🤗**huggingface transformers**🤗에 porting 되어 있으며 아래와 같이 쉽게 weight을 직접 다운로드 없이 사용하실 수 있습니다.
 
 #### 1. Install pytorch and transformers
 ```bash
@@ -20,8 +51,8 @@ import torch
 from transformers import AutoTokenizer, AutoModelForSequenceClassification, pipeline
 
 # load model
-tokenizer = AutoTokenizer.from_pretrained("jaehyeong/koeletra-base-v3-finetuned-naver-shopping-review-sentiment-analysis")
-model = AutoModelForSequenceClassification.from_pretrained("jaehyeong/koeletra-base-v3-finetuned-naver-shopping-review-sentiment-analysis")
+tokenizer = AutoTokenizer.from_pretrained("jaehyeong/koelectra-base-v3-finetuned-generalized-sentiment-analysis")
+model = AutoModelForSequenceClassification.from_pretrained("jaehyeong/koelectra-base-v3-finetuned-generalized-sentiment-analysis")
 sentiment_classifier = pipeline('sentiment-analysis', tokenizer=tokenizer, model=model)
 ```  
 

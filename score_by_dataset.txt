@@ -1,0 +1,33 @@
+# naver shopping review 
+              precision    recall  f1-score   support
+
+           0       0.97      0.93      0.95     19975
+           1       0.93      0.97      0.95     20025
+
+    accuracy                           0.95     40000
+   macro avg       0.95      0.95      0.95     40000
+weighted avg       0.95      0.95      0.95     40000
+
+
+
+# naver movie review
+              precision    recall  f1-score   support
+
+           0       0.96      0.89      0.93     20116
+           1       0.90      0.96      0.93     19883
+
+    accuracy                           0.93     39999
+   macro avg       0.93      0.93      0.93     39999
+weighted avg       0.93      0.93      0.93     39999
+
+
+# steam
+
+              precision    recall  f1-score   support
+
+           0       0.88      0.88      0.88      9973
+           1       0.88      0.88      0.88     10027
+
+    accuracy                           0.88     20000
+   macro avg       0.88      0.88      0.88     20000
+weighted avg       0.88      0.88      0.88     20000

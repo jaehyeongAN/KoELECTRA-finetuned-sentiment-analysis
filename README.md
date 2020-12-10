@@ -34,7 +34,7 @@ Training을 위해 [monologg](https://github.com/monologg)님의 [KoELECTRA](htt
 </br>
 
 ## ✏ Usage
-본 모델은 🤗**huggingface transformers**🤗에 porting 되어 있으며 아래와 같이 쉽게 weight을 직접 다운로드 없이 사용하실 수 있습니다.
+본 모델은 🤗**huggingface transformers**에 porting 되어 있으며 아래와 같이 쉽게 weight을 직접 다운로드 없이 사용하실 수 있습니다.
 
 #### 1. Install pytorch and transformers
 ```bash

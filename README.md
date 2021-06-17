@@ -47,12 +47,12 @@ $ pip install transformers
 ```python
 # import library
 import torch
-from transformers import AutoTokenizer, AutoModelForSequenceClassification, pipeline
+from transformers import AutoTokenizer, AutoModelForSequenceClassification, TextClassificationPipeline
 
 # load model
 tokenizer = AutoTokenizer.from_pretrained("jaehyeong/koelectra-base-v3-finetuned-generalized-sentiment-analysis")
 model = AutoModelForSequenceClassification.from_pretrained("jaehyeong/koelectra-base-v3-finetuned-generalized-sentiment-analysis")
-sentiment_classifier = pipeline('sentiment-analysis', tokenizer=tokenizer, model=model)
+sentiment_classifier = TextClassificationPipeline(tokenizer=tokenizer, model=model)
 ```  
 
 

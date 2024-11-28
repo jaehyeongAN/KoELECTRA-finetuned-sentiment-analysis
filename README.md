@@ -50,8 +50,8 @@ import torch
 from transformers import AutoTokenizer, AutoModelForSequenceClassification, TextClassificationPipeline
 
 # load model
-tokenizer = AutoTokenizer.from_pretrained("jaehyeong/koelectra-base-v3-finetuned-generalized-sentiment-analysis")
-model = AutoModelForSequenceClassification.from_pretrained("jaehyeong/koelectra-base-v3-finetuned-generalized-sentiment-analysis")
+tokenizer = AutoTokenizer.from_pretrained("Copycats/koelectra-base-v3-generalized-sentiment-analysis")
+model = AutoModelForSequenceClassification.from_pretrained("Copycats/koelectra-base-v3-generalized-sentiment-analysis")
 sentiment_classifier = TextClassificationPipeline(tokenizer=tokenizer, model=model)
 ```  
 
